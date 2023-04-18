@@ -1,36 +1,32 @@
-# micromaqueen-python
-Python class for DFRobot Micro:Maqueen platform. 
-## Usage
-Sample program for testing front LEDs, reading distance, patrol and controlling motors:
-
-    import microbit
-    import maqueen
-    mq = Maqueen()
-
-	while True:
-	    mq.set_led(0, 1)
-	    microbit.sleep(1000)
-	    mq.set_led(1, 1)
-	    mq.set_led(0, 0)
-	    microbit.sleep(1000)
-	    mq.set_led(1, 0)
-	    for i in range(0, 10):
-		print("Distance: %d" % mq.read_distance())
-		microbit.sleep(1000)
-
-	   for i in range(0, 10):
-               l = mq.read_patrol(0)
-               p = mq.read_patrol(1)
-               print("Patrol: %d %d" % (l, p))
-               microbit.sleep(1000)
-
-	    d = [-100, 50, 20, -200, 200, 40]
-	    for i in d:
-	        mq.set_motor(0, i)
-	        microbit.sleep(1000)
-	        mq.set_motor(1, i)
-	        microbit.sleep(1000)
-
-	    mq.motor_stop_all()
+# Imports go at the top
+from microbit import *
+from maqueen import *
 
 
+def moverComoPeon():
+    robot.mover_celda()
+    
+def moverComoCaballo():
+    robot.mover_celda()
+    robot.mover_celda()
+    robot.mover_celda()
+    robot.girar_derecha()
+    robot.mover_celda()
+
+def moverComoTorre():
+    for i in range(1,8):
+     robot.mover_celda()
+
+robot = Maqueen()
+
+while True:
+    if button_a.is_pressed():
+        display.show("C")
+        moverComoCaballo()
+        
+    elif button_b.is_pressed():
+        display.show("P")
+        moverComoPeon()
+        
+    else:
+        display.show(Image.HEART)
