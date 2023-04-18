@@ -2,7 +2,7 @@ import microbit
 import machine
 import utime
 import neopixel
-
+import math
 
 class Maqueen:
 	"""
@@ -90,16 +90,26 @@ class Maqueen:
 	def forward(self):
 		self.set_motor(0, 255)  # Motor izquierdo hacia adelante
 		self.set_motor(1, 255)  # Motor derecho hacia adelante
-'''
-def main():
-    maqueen_robot = Maqueen()
-    maqueen_robot.forward()
-    utime.sleep(2)
-    maqueen_robot.turn_right()
-    utime.sleep(1)
-    maqueen_robot.turn_left()
-    utime.sleep(1)
-    maqueen_robot.stop()
-if __name__ == "__main__":
-    main()
-'''
+
+	def mover_celda(self):
+		"""
+        Esta función permite al robot Maqueen moverse desde el centro de una celda hasta el centro de la siguiente celda.
+        En un tablero de celdas de 9.5 cm de lado y con ruedas de 2 cm de radio, el robot avanzará de forma precisa
+        para completar el movimiento entre las celdas.
+
+        Uso:
+        robot = Maqueen()
+        robot.mover_celda()
+        """
+		radio_rueda = 2  # en centímetros
+		distancia_celda = 9.5
+		velocidad_ruedas = 1  # vueltas por segundo, ajustar según sea necesario
+		circunferencia_rueda = 2 * math.pi * radio_rueda
+		distancia_recorrer = distancia_celda + (distancia_celda / 2)
+		num_vueltas_rueda = distancia_recorrer / circunferencia_rueda
+		tiempo_mover = num_vueltas_rueda / velocidad_ruedas
+
+		self.forward()
+		utime.sleep(tiempo_mover)  # Ajustar este valor según sea necesario
+		self.stop()
+    
