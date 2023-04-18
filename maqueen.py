@@ -3,6 +3,7 @@ import machine
 import utime
 import neopixel
 
+
 class Maqueen:
 	"""
 	Python class for DFRobot Micro:maqueen platform
@@ -10,6 +11,7 @@ class Maqueen:
 	Author: Krzysztof Sawicki <krzysztof@rssi.pl>
 	License: GNU
 	"""
+
 	def __init__(self):
 		self.rgbleds = neopixel.NeoPixel(microbit.pin15, 4)
 		print("MAQUEEN initialized")
@@ -73,37 +75,31 @@ class Maqueen:
 	def motor_stop_all(self):
 		self.set_motor(0, 0)
 		self.set_motor(1, 0)
-		
+    
 	def turn_right(self):
-        	self.set_motor(0, 255)  # Motor izquierdo hacia adelante
-        	self.set_motor(1, -255)  # Motor derecho hacia atrás
+		self.set_motor(0, 255)  # Motor izquierdo hacia adelante
+		self.set_motor(1, -255)  # Motor derecho hacia atrás
 
-    	def turn_left(self):
-        	self.set_motor(0, -255)  # Motor izquierdo hacia atrás
-        	self.set_motor(1, 255)  # Motor derecho hacia adelante
+	def turn_left(self):
+		self.set_motor(0, -255)  # Motor izquierdo hacia atrás
+		self.set_motor(1, 255)  # Motor derecho hacia adelante
 
-    	def stop(self):
-        	self.motor_stop_all()
+	def stop(self):
+		self.motor_stop_all()
 
-    def forward(self):
-        self.set_motor(0, 255)  # Motor izquierdo hacia adelante
-        self.set_motor(1, 255)  # Motor derecho hacia adelante
+	def forward(self):
+		self.set_motor(0, 255)  # Motor izquierdo hacia adelante
+		self.set_motor(1, 255)  # Motor derecho hacia adelante
 '''
 def main():
     maqueen_robot = Maqueen()
-
     maqueen_robot.forward()
     utime.sleep(2)
-
     maqueen_robot.turn_right()
     utime.sleep(1)
-
     maqueen_robot.turn_left()
     utime.sleep(1)
-
     maqueen_robot.stop()
-
 if __name__ == "__main__":
     main()
 '''
-
