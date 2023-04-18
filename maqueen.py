@@ -107,6 +107,7 @@ class Maqueen:
 		self.turn_left()
 		microbit.sleep(150)
 		self.turn_left()
+		microbit.sleep(150)
 		self.motor_stop_all() 
     
 
