@@ -93,21 +93,18 @@ class Maqueen:
 	
 	def mover_celda(self):
 		self.forward()
-		microbit.sleep(450)
+		microbit.sleep(500)
 		self.motor_stop_all() 
         
 	def girar_derecha(self):
 		self.turn_right()
-		microbit.sleep(150)
-		self.turn_right()
-		microbit.sleep(150)
+		microbit.sleep(425)
 		self.motor_stop_all() 
 
 	def girar_izquierda(self):
 		self.turn_left()
-		microbit.sleep(150)
-		self.turn_left()
-		microbit.sleep(150)
+		microbit.sleep(425)
 		self.motor_stop_all() 
+    
     
 
